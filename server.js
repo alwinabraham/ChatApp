@@ -9,7 +9,6 @@ io.on('connection', socket =>{
     })
     // socket.emit('chat-message','Hello World')
     socket.on('send-chat-message',message =>{
-        // console.log(message);
         socket.broadcast.emit('chat-message',{message:message,name:users[socket.id]})
     })
     socket.on('disconnect', () =>{
