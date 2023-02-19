@@ -1,5 +1,6 @@
 const socket = io('http://localhost:3000')
 const messageContainer = document.getElementById('message-container')
+const messageContainerOne = document.getElementById('message-container-1')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
@@ -22,13 +23,19 @@ socket.on('user-disconnected',name=>{
 messageForm.addEventListener('submit',e=>{
     e.preventDefault()
     const message = messageInput.value
-    appendMessage(`You:${message}`)
+    appendMessageOne(`You:${message}`)
     socket.emit('send-chat-message',message)
     messageInput.value = ''
 })
 
 function appendMessage(message){
     const messageElement = document.createElement('div')
+    messageElement.innerText = message
+    messageContainer.append(messageElement)
+}
+
+function appendMessageOne(message){
+    const messageElement = document.createElement('div-you')
     messageElement.innerText = message
     messageContainer.append(messageElement)
 }
