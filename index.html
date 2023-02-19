@@ -8,35 +8,50 @@
     <script defer src ="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
     <style>
-        body {
-          padding: 0;
-          margin: 0;
+        body{
+          background-image: url('/back.jpeg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          height: 90vh;
+          font-family: 'Courier New', Courier, monospace;
+        }
+
+        .main-container {
           display: flex;
           justify-content: center;
         }
-    
-        #message-container {
-          width: 100%;
+
+        .container{
+          width: 60%;
         }
+        
 
         #message-container div {
           background-color: #FFF;
           padding: 15px;
+          border-radius: 12px;
+          margin-top: 8px;
+          width: 75%;
         }
 
         #message-container div-you {
-          display: block;
+          display: flex;
+          justify-content: end;
           background-color: rgb(72, 190, 3);
           padding: 15px;
+          border-radius: 12px;
+          margin-top: 8px;
+          margin-left: 25%;
+          width: 75%;
         }
     
         #send-container {
           position: fixed;
           padding-bottom: 30px;
           bottom: 0;
-          background-color: white;
-          max-width: 1200px;
-          width: 80%;
+          max-width: 100%;
+          width: 60%;
           display: flex;
         }
     
@@ -46,10 +61,14 @@
     </style>
 </head>
 <body>
+  <div class="main-container">
+  <div class="container">
     <div id="message-container"></div>
     <form id="send-container">
         <input type="text" id="message-input">
         <button type="submit" id="send-button">Send</button>
     </form>
+  </div>
+</div>
 </body>
 </html>
