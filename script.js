@@ -5,7 +5,7 @@ const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
 const name = prompt('what is your name?')
-appendMessage('you Joined')
+appendUser('you Joined')
 socket.emit('new-user',name)
 
 socket.on('chat-message',data=>{
@@ -13,11 +13,11 @@ socket.on('chat-message',data=>{
 })
 
 socket.on('user-connected',name=>{
-    appendMessage(`${name} connected`);
+    appendUser(`${name} connected`);
 })
 
 socket.on('user-disconnected',name=>{
-    appendMessage(`${name} disconnected`);
+    appendUser(`${name} disconnected`);
 })
 
 messageForm.addEventListener('submit',e=>{
@@ -36,6 +36,11 @@ function appendMessage(message){
 
 function appendMessageOne(message){
     const messageElement = document.createElement('div-you')
+    messageElement.innerText = message
+    messageContainer.append(messageElement)
+}
+function appendUser(message){
+    const messageElement = document.createElement('div-user')
     messageElement.innerText = message
     messageContainer.append(messageElement)
 }
