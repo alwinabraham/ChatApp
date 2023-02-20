@@ -26,13 +26,23 @@
           width: 60%;
         }
         
-
         #message-container div {
+          z-index: 3;
           background-color: #FFF;
-          padding: 15px;
-          border-radius: 12px;
-          margin-top: 8px;
-          width: 75%;
+          padding: 12px;
+          width: 65%;
+          margin-bottom: 18px;
+          border-top-right-radius: 12px;
+          border-bottom-left-radius: 12px;
+          border-bottom-right-radius: 12px;
+        }
+        
+        #message-container div-name {
+          z-index: 2;
+          font-size: 12px;
+          background-color: #FFF;
+          padding: 12px;
+          border-top-right-radius: 12px;
         }
 
         #message-container div-user {
@@ -45,16 +55,17 @@
           margin-left: 30%;
           width: 40%;
         }
-
+        
         #message-container div-you {
           display: flex;
           justify-content: end;
           background-color: rgb(72, 190, 3);
-          padding: 15px;
+          padding: 12px;
           border-radius: 12px;
+          border-top-right-radius: 0;
           margin-top: 8px;
-          margin-left: 25%;
-          width: 75%;
+          margin-left: 35%;
+          width: 65%;
         }
     
         #send-container {

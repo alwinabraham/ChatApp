@@ -1,6 +1,5 @@
 const socket = io('http://localhost:3000')
 const messageContainer = document.getElementById('message-container')
-const messageContainerOne = document.getElementById('message-container-1')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
@@ -9,7 +8,8 @@ appendUser('you Joined')
 socket.emit('new-user',name)
 
 socket.on('chat-message',data=>{
-    appendMessage(`${data.name}:${data.message}`);
+    appendName(data)
+    appendMessage(data);
 })
 
 socket.on('user-connected',name=>{
@@ -23,14 +23,20 @@ socket.on('user-disconnected',name=>{
 messageForm.addEventListener('submit',e=>{
     e.preventDefault()
     const message = messageInput.value
-    appendMessageOne(`You:${message}`)
+    appendMessageOne(`${message}`)
     socket.emit('send-chat-message',message)
     messageInput.value = ''
 })
 
-function appendMessage(message){
+function appendMessage(data){
     const messageElement = document.createElement('div')
-    messageElement.innerText = message
+    messageElement.innerText = data.message
+    messageContainer.append(messageElement)
+}
+
+function appendName(data){
+    const messageElement = document.createElement('div-name')
+    messageElement.innerText = data.name
     messageContainer.append(messageElement)
 }
 
@@ -39,6 +45,7 @@ function appendMessageOne(message){
     messageElement.innerText = message
     messageContainer.append(messageElement)
 }
+
 function appendUser(message){
     const messageElement = document.createElement('div-user')
     messageElement.innerText = message
